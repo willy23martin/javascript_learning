@@ -11,9 +11,9 @@ export class ChatComponent implements OnInit {
   lastName: string;
   email: string;
   telephone: string;
-  termsAndConditions: boolean;
+  termsAndConditions: boolean; // Used with NgModel
 
-  telephones: string[];
+  telephones: string[]; // Used with NgIf and NgFor
 
   constructor() {
     this.name = "Name";

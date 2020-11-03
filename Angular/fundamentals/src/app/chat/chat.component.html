@@ -6,11 +6,27 @@
 <p>{{email}}</p>
 <p>{{telephone}}</p>
 
-<p>{{termsAndConditions}}</p>
-
 <!--Directives NgIf and NgFor-->
 <div *ngIf="telephones.length >= 1">
     <div *ngFor="let telephoneI of telephones; index as t">
         <p>Telephone {{t+1}} - {{telephoneI}}</p>
     </div>
 </div>
+
+<hr>
+
+<!--Directive NgModel-->
+<h4>Terms and conditions</h4>
+<input type="radio" name="terms" [(ngModel)]="termsAndConditions" [value]=true> Yes
+<input type="radio" name="terms" [(ngModel)]="termsAndConditions" [value]=false> No
+
+<p *ngIf="termsAndConditions">
+    Accepted
+</p>
+<p *ngIf="!termsAndConditions">
+    Did not accepted
+</p>
+
+<hr>
+
+
