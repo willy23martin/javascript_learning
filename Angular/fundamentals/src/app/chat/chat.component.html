@@ -7,3 +7,10 @@
 <p>{{telephone}}</p>
 
 <p>{{termsAndConditions}}</p>
+
+<!--Directives NgIf and NgFor-->
+<div *ngIf="telephones.length >= 1">
+    <div *ngFor="let telephoneI of telephones; index as t">
+        <p>Telephone {{t+1}} - {{telephoneI}}</p>
+    </div>
+</div>
