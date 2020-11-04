@@ -1,10 +1,67 @@
 <h1>Chat widget</h1>
 
-<!--Directive {{}}-->
+<!--Reactive forms-->
+<form [formGroup]="customerDataForm" (ngSubmit)="onSubmit()">
+    <table aria-colspan="2">
+        <tr>
+            <td>
+                <label for="name">Name:</label>
+            </td>
+            <td>
+                <input type="text" name="name" id="name" formControlName="name"> <br />
+            </td>
+            <td *ngIf="customerDataForm.get('name').hasError('required') || customerDataForm.get('name').hasError('minLength') || customerDataForm.get('name').hasError('pattern')">
+                {{firstNameNotValidMessage}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="lastName">Last Name:</label>
+            </td>
+            <td>
+                <input type="text" name="lastName" id="lastName" formControlName="lastName"> <br />
+            </td>
+            <td *ngIf="customerDataForm.get('lastName').hasError('required') || customerDataForm.get('lastName').hasError('minLength') || customerDataForm.get('lastName').hasError('pattern')">
+                {{lastNameNotValidMessage}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="email">Email:</label>
+            </td>
+            <td>
+                <input type="email" name="email" id="email" formControlName="email"> <br />
+            </td>
+            <td *ngIf="customerDataForm.get('email').hasError('required') || customerDataForm.get('email').hasError('email')">
+                {{emailNotValidMessage}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="telephone">Telephone:</label>
+            </td>
+            <td>
+                <input type="tel" name="telephone" id="telephone" formControlName="telephone"> <br />
+            </td>
+            <td *ngIf="customerDataForm.get('telephone').hasError('required') || customerDataForm.get('telephone').hasError('pattern')">
+                {{phoneNumberNotValidMessage}}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Start Chat">
+            </td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+
+<!--Directive {{}}
 <p>{{name}}</p>
 <p>{{lastName}}</p>
 <p>{{email}}</p>
-<p>{{telephone}}</p>
+<p>{{telephone}}</p>-->
 
 <!--Directives NgIf and NgFor-->
 <div *ngIf="telephones.length >= 1">
@@ -28,5 +85,3 @@
 </p>
 
 <hr>
-
-
