@@ -94,6 +94,6 @@
 </div>
 
 <div>
-    <app-embedded-interaction-frame *ngIf="startChat" [customerData]="getCustomerData()">
+    <app-embedded-interaction-frame *ngIf="startChat" [customerData]="getCustomerData()" (interactionWasFinished)="finishChat($event)"> 
     </app-embedded-interaction-frame>
 </div>

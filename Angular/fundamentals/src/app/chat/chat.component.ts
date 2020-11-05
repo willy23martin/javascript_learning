@@ -76,4 +76,9 @@ export class ChatComponent implements OnInit {
     this.customerDataForm.reset();
   }
 
+  finishChat($event): void {
+    console.warn('Chat was: ', $event);
+    this.onReset();
+  }
+
 }

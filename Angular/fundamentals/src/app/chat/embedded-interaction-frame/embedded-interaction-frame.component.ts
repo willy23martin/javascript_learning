@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-embedded-interaction-frame',
@@ -11,6 +11,8 @@ export class EmbeddedInteractionFrameComponent implements OnInit {
 
   @Input() startChat: boolean;
 
+  @Output() interactionWasFinished: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -21,6 +23,11 @@ export class EmbeddedInteractionFrameComponent implements OnInit {
 
   startChatInteraction(customerData: any): void{
     this.customerData = customerData;
+  }
+
+  finishChatInteraction(): void {
+    this.customerData = {};
+    this.interactionWasFinished.emit('FINISHED');
   }
 
 }
