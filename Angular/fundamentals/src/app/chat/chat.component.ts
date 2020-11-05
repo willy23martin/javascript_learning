@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
+import { EmbeddedInteractionFrameComponent } from './embedded-interaction-frame/embedded-interaction-frame.component';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
@@ -8,6 +8,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ChatComponent implements OnInit {
 
+  @ViewChild('app-embedded-interaction-frame') embeddedInteractionIframe: EmbeddedInteractionFrameComponent;
+
+  startChat: boolean;
 
   termsAndConditions: boolean; // Used with NgModel
 
@@ -30,6 +33,7 @@ export class ChatComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder) {
+    this.startChat = false;
     this.telephones = [];
     this.customerDataForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3), Validators.pattern(this.personNameRegExp)]],
@@ -43,20 +47,32 @@ export class ChatComponent implements OnInit {
     this.telephones[0] = '919999999';
   }
 
-  get form(){
-    return this.customerDataForm.controls;
+  getCustomerData(): any {
+    const customerData = {
+      name: this.customerDataForm.get('name').value,
+      lastName: this.customerDataForm.get('lastName').value,
+      email: this.customerDataForm.get('email').value,
+      telephone: this.customerDataForm.get('telephone').value
+    };
+    return customerData;
   }
 
-  onSubmit(){
+  onSubmit(): void {
+    console.log('Submitted was clicked');
     this.submitted = true;
-    if(this.customerDataForm.invalid){
+    if (this.customerDataForm.invalid) {
+      console.error('Invalid form', this.customerDataForm);
       return;
+    } else {
+      console.log('Chat was started');
+      this.startChat = true;
     }
-    this.onReset();
+    // this.onReset();
   }
 
-  onReset(){
-    this.submitted=false;
+  onReset(): void {
+    this.submitted = false;
+    this.startChat = false;
     this.customerDataForm.reset();
   }
 
