@@ -15,7 +15,7 @@
                 </td>
                 <td
                     *ngIf="customerDataForm.get('name').hasError('required') || customerDataForm.get('name').invalid || customerDataForm.get('name').hasError('pattern')">
-                    {{firstNameNotValidMessage}}
+                    {{firstNameNotValidMessage | uppercase}}
                 </td>
             </tr>
             <tr>
@@ -27,7 +27,7 @@
                 </td>
                 <td
                     *ngIf="customerDataForm.get('lastName').hasError('required') || customerDataForm.get('lastName').invalid || customerDataForm.get('lastName').hasError('pattern')">
-                    {{lastNameNotValidMessage}}
+                    {{lastNameNotValidMessage | uppercase}}
                 </td>
             </tr>
             <tr>
@@ -39,7 +39,7 @@
                 </td>
                 <td
                     *ngIf="customerDataForm.get('email').hasError('required') || customerDataForm.get('email').hasError('email')">
-                    {{emailNotValidMessage}}
+                    {{emailNotValidMessage | uppercase}}
                 </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
                 </td>
                 <td
                     *ngIf="customerDataForm.get('telephone').hasError('required') || customerDataForm.get('telephone').hasError('pattern')">
-                    {{phoneNumberNotValidMessage}}
+                    {{phoneNumberNotValidMessage | uppercase}}
                 </td>
             </tr>
             <tr>
