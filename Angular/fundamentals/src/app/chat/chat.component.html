@@ -1,5 +1,7 @@
 <h1>Chat widget</h1>
-
+<div>
+    <app-notifications></app-notifications>
+</div>
 <div *ngIf="!startChat">
     <!--Reactive forms-->
     <form [formGroup]="customerDataForm" (ngSubmit)="onSubmit()">

@@ -8,12 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { EmbeddedInteractionFrameComponent } from './chat/embedded-interaction-frame/embedded-interaction-frame.component';
+import { NotificationsComponent } from './chat/notifications/notifications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatComponent,
-    EmbeddedInteractionFrameComponent
+    EmbeddedInteractionFrameComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,

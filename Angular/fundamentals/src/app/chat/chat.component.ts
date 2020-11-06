@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ChatSessionsService } from '../services/chat-sessions.service';
 import { EmbeddedInteractionFrameComponent } from './embedded-interaction-frame/embedded-interaction-frame.component';
 @Component({
   selector: 'app-chat',
@@ -24,7 +25,7 @@ export class ChatComponent implements OnInit {
   firstNameNotValidMessage = 'Please insert your name without using especial characters (.,;:ñ´/*+-_?¡¿]}).';
   lastNameNotValidMessage = 'Please insert your name without using especial characters (.,;:ñ´/*+-_?¡¿]}).';
   emailNotValidMessage = 'Please insert your valid email';
-  phoneNumberNotValidMessage = 'Please insert your valide fixed phone (7 digits) or cellphone (10 digits)';
+  phoneNumberNotValidMessage = 'Please insert your valid fixed phone (7 digits) or cellphone (10 digits)';
 
   personNameRegExp = new RegExp(`^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$`);
   emailRegExp = new RegExp(`^[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$`);
@@ -32,7 +33,7 @@ export class ChatComponent implements OnInit {
   fixedPhoneRegExp = new RegExp(`[0-9]{3}[0-9]{4}`);
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private chatSessionService: ChatSessionsService) {
     this.startChat = false;
     this.telephones = [];
     this.customerDataForm = this.formBuilder.group({
@@ -66,6 +67,7 @@ export class ChatComponent implements OnInit {
     } else {
       console.log('Chat was started');
       this.startChat = true;
+      this.chatSessionService.setStatusMessage('Chat was started');
     }
     // this.onReset();
   }
@@ -74,6 +76,7 @@ export class ChatComponent implements OnInit {
     this.submitted = false;
     this.startChat = false;
     this.customerDataForm.reset();
+    this.chatSessionService.setStatusMessage('');
   }
 
   finishChat($event): void {
