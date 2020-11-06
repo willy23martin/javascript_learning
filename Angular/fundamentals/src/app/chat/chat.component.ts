@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ChatSessionsService } from '../services/chat-sessions.service';
 import { CustomerData } from './customer-data';
@@ -8,7 +8,7 @@ import { EmbeddedInteractionFrameComponent } from './embedded-interaction-frame/
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit, AfterContentInit, AfterContentChecked, AfterViewInit, OnDestroy {
 
   @ViewChild('app-embedded-interaction-frame') embeddedInteractionIframe: EmbeddedInteractionFrameComponent;
 
@@ -35,6 +35,7 @@ export class ChatComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder, private chatSessionService: ChatSessionsService) {
+    console.warn('0 - Component is being constructed');
     this.startChat = false;
     this.telephones = [];
     this.customerDataForm = this.formBuilder.group({
@@ -46,7 +47,24 @@ export class ChatComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.warn('1 - Component was initialized');
     this.telephones[0] = '919999999';
+  }
+
+  ngAfterContentInit(): void {
+    console.warn('2 - Content was loaded');
+  }
+
+  ngAfterContentChecked(): void {
+    console.warn('3 - New content was checked');
+  }
+
+  ngAfterViewInit(): void {
+    console.warn('4 - View was loaded')
+  }
+
+  ngOnDestroy(): void {
+    console.warn('5 - Component was destroyed');
   }
 
   getCustomerData(): any {
