@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ChatSessionsService } from '../services/chat-sessions.service';
+import { CustomerData } from './customer-data';
 import { EmbeddedInteractionFrameComponent } from './embedded-interaction-frame/embedded-interaction-frame.component';
 @Component({
   selector: 'app-chat',
@@ -55,6 +56,8 @@ export class ChatComponent implements OnInit {
       email: this.customerDataForm.get('email').value,
       telephone: this.customerDataForm.get('telephone').value
     };
+    const customerDataModel: CustomerData = customerData;
+    console.log('Interface customer data: ', customerDataModel);
     return customerData;
   }
 
