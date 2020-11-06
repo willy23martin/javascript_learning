@@ -25,7 +25,7 @@
                 <td>
                     <input type="text" name="lastName" id="lastName" formControlName="lastName"> <br />
                 </td>
-                <td 
+                <td
                     *ngIf="customerDataForm.get('lastName').hasError('required') || customerDataForm.get('lastName').invalid || customerDataForm.get('lastName').hasError('pattern')">
                     {{lastNameNotValidMessage}}
                 </td>
@@ -57,7 +57,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Start Chat">
+                    <button mat-flat-button color="warn" type="submit">Start Chat</button>
                 </td>
                 <td></td>
             </tr>
@@ -96,6 +96,7 @@
 </div>
 
 <div>
-    <app-embedded-interaction-frame *ngIf="startChat" [customerData]="getCustomerData()" (interactionWasFinished)="finishChat($event)"> 
+    <app-embedded-interaction-frame *ngIf="startChat" [customerData]="getCustomerData()"
+        (interactionWasFinished)="finishChat($event)">
     </app-embedded-interaction-frame>
 </div>

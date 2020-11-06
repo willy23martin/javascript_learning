@@ -13,10 +13,15 @@ import { LoginComponent } from './login/login.component';
 
 // Http:
 import {HttpClientModule} from '@angular/common/http';
+
 import { MenuComponent } from './menu/menu.component';
 import { VideoCallScheduleCallbackComponent } from './video-call-schedule-callback/video-call-schedule-callback.component';
 import { VideoCallComponent } from './video-call/video-call.component';
 import { ScheduleCallbackComponent } from './schedule-callback/schedule-callback.component';
+
+// Angular Material:
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,9 @@ import { ScheduleCallbackComponent } from './schedule-callback/schedule-callback
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
