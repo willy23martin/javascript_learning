@@ -24,7 +24,7 @@ export class LoginService {
       email: loginData.email,
       emailProvider: loginData.emailProvider
     };
-    this.router.navigate(['chat']);
+    this.router.navigate(['menu']);
   }
 
   setLoggedIn(loggedIn: boolean): void {

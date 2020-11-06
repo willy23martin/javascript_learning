@@ -13,6 +13,10 @@ import { LoginComponent } from './login/login.component';
 
 // Http:
 import {HttpClientModule} from '@angular/common/http';
+import { MenuComponent } from './menu/menu.component';
+import { VideoCallScheduleCallbackComponent } from './video-call-schedule-callback/video-call-schedule-callback.component';
+import { VideoCallComponent } from './video-call/video-call.component';
+import { ScheduleCallbackComponent } from './schedule-callback/schedule-callback.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import {HttpClientModule} from '@angular/common/http';
     ChatComponent,
     EmbeddedInteractionFrameComponent,
     NotificationsComponent,
-    LoginComponent
+    LoginComponent,
+    MenuComponent,
+    VideoCallScheduleCallbackComponent,
+    VideoCallComponent,
+    ScheduleCallbackComponent
   ],
   imports: [
     BrowserModule,
