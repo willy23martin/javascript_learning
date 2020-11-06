@@ -9,19 +9,25 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { EmbeddedInteractionFrameComponent } from './chat/embedded-interaction-frame/embedded-interaction-frame.component';
 import { NotificationsComponent } from './chat/notifications/notifications.component';
+import { LoginComponent } from './login/login.component';
+
+// Http:
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatComponent,
     EmbeddedInteractionFrameComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

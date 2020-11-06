@@ -18,6 +18,4 @@ export class NotificationsComponent implements OnInit {
     this.notificationMessage = this.chatSessionsService.getStatusMessage();
   }
 
-
-
 }
